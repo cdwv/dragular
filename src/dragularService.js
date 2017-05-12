@@ -552,8 +552,12 @@ var dragularService = function ($rootScope, $compile) {
             } else {
               shared.targetModel = shared.tempModel;
             }
-            
-            target.removeChild(item); // element must be removed for ngRepeat to apply correctly
+
+            try {
+              target.removeChild(item); // element must be removed for ngRepeat to apply correctly
+            } catch (err) {
+              // element removed
+            }
 
             if (!shared.copy) {
               shared.sourceModel.splice(shared.initialIndex, 1);

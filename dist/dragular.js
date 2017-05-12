@@ -52,7 +52,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* global angular */
 	'use strict';
@@ -71,9 +71,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  .directive('dragular', dragularDirective);
 
 
-/***/ },
+/***/ }),
 /* 1 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 
@@ -134,9 +134,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = dragular;
 
 
-/***/ },
+/***/ }),
 /* 2 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/* global angular */
 	'use strict';
@@ -692,8 +692,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	            } else {
 	              shared.targetModel = shared.tempModel;
 	            }
-	            
-	            target.removeChild(item); // element must be removed for ngRepeat to apply correctly
+
+	            try {
+	              target.removeChild(item); // element must be removed for ngRepeat to apply correctly
+	            } catch (err) {
+	              // element removed
+	            }
 
 	            if (!shared.copy) {
 	              shared.sourceModel.splice(shared.initialIndex, 1);
@@ -1323,7 +1327,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
-/***/ }
+/***/ })
 /******/ ])
 });
 ;
